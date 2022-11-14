@@ -104,6 +104,16 @@ public class Produit implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	public Produit(String codeProduit, String libelleProduit, float prix, Date dateCreation,
+			Date dateDerniereModification) {
+		super();
+		this.codeProduit = codeProduit;
+		this.libelleProduit = libelleProduit;
+		this.prix = prix;
+		this.dateCreation = dateCreation;
+		this.dateDerniereModification = dateDerniereModification;
+	
+	}
 	
 
 
