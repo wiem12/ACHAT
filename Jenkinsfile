@@ -51,7 +51,7 @@ stage ('Test Unitaire')
         steps {
         sh 'mvn test -Dtest="tn.esprit.rh.achat.services.StockServiceImplMock.java"' 
         }
-        
+        }
         
          stage('Building our image') { 
 
