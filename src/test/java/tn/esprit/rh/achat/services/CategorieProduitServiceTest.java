@@ -97,7 +97,7 @@ public class CategorieProduitServiceTest {
 	verify(categorieRepository).deleteById(categorie1.getIdCategorieProduit());
 	
 	System.out.println(categorie1);
-	System.out.println(" Delete is working correctly...!!");  
+	System.out.println(" Delete is working correctly..!!");  
 	}
 	//done
 
