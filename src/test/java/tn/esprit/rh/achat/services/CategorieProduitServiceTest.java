@@ -27,6 +27,7 @@ import tn.esprit.rh.achat.services.CategorieProduitServiceImpl;
 @SpringBootTest
 @TestMethodOrder(OrderAnnotation.class)
 @ExtendWith(MockitoExtension.class)
+
 public class CategorieProduitServiceTest {
 	
 	@Mock
