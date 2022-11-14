@@ -1,10 +1,8 @@
 package tn.esprit.rh.achat.services;
 
-import java.util.List;
-
 import tn.esprit.rh.achat.entities.Stock;
 
-
+import java.util.List;
 
 public interface IStockService {
 
@@ -12,16 +10,11 @@ public interface IStockService {
 
 	Stock addStock(Stock s);
 
-	Stock getStckByid(Long id);
-
-	void deleteStockById(Long id);
-
-
-	void deleteStock(Stock s);
+	void deleteStock(Long id);
 
 	Stock updateStock(Stock u);
 
 	Stock retrieveStock(Long id);
 
-	StringBuilder retrieveStatusStock();
+	String retrieveStatusStock();
 }

@@ -1,66 +1,56 @@
 package tn.esprit.rh.achat.services;
-
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import org.junit.Test;
-import static org.mockito.Mockito.times;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-
+import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.runner.RunWith;
-
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import tn.esprit.rh.achat.entities.Stock;
 import tn.esprit.rh.achat.repositories.StockRepository;
 
-
-@SpringBootTest
-@RunWith(MockitoJUnitRunner.class)
-
+@ExtendWith(MockitoExtension.class)
 public class StockServiceImplMock {
-
-        @InjectMocks
-        private StockServiceImpl stockservice;
-
-        @Mock
-        private StockRepository sr;
-
-
-        @Test
-        public void getStockTest() {
-
-            when(sr.findAll()).thenReturn(Stream
-                    .of(new Stock("epuise", 4 , 5), new Stock("test",6,8)).collect(Collectors.toList()));
-            Assertions.assertEquals(2, stockservice.retrieveAllStocks().size());
-        }
-
-        @Test
-        public void addStockTest() {
-            Stock s = new Stock("epuise", 4 , 5);
-            when(sr.save(s)).thenReturn(s);
-            assertEquals(s, stockservice.addStock(s));
-        }
-
-
-        @Test
-        public void deleteStockTest() {
-            Stock s = new Stock("aaa", 66 , 55);
-            stockservice.deleteStock(s);
-            verify(sr, times(1)).delete(s);
-        }
-
-
-
-
+	
+	@Mock
+	StockRepository stockRepository;
+	@InjectMocks
+	StockServiceImpl stockService;
+	
+	@Test
+	public void retrieveAllStockTest() {
+		when(stockRepository.findAll()).thenReturn((List<Stock>) Stream
+				.of(new Stock("jihen",50,30),new Stock("jajou",100,50))
+				.collect(Collectors.toList()));
+		assertEquals(2,stockService.retrieveAllStocks().size());
+	}
+	
+	@Test
+	public void retrieveStockTest() {
+		Long id = (long) 3;
+		when(stockRepository.findById(id)).thenReturn(Optional.of(new Stock("jiji",200,60)));
+		Stock s = stockService.retrieveStock(id);
+		assertNotNull(s);
+		verify(stockRepository).findById(Mockito.anyLong());
+	}
+	
+	@Test
+	public void saveStockTest() {
+		Stock s = new Stock("tatou",60,30);
+		when(stockRepository.save(s)).thenReturn(s);
+		assertEquals(s, stockService.addStock(s));
+	}
+	
+	
 }
