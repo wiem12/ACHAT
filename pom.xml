@@ -17,6 +17,13 @@
         <java.version>1.8</java.version>
         <maven-jar-plugin.version>3.1.0</maven-jar-plugin.version>
     </properties>
+	<distributionManagement>
+		<repository>
+			<id>deploymentRepo</id>
+			<name>Nexus Repository</name>
+			<url>http://192.168.33.10:8081/repository/maven-releases/</url>
+		</repository>
+	</distributionManagement>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -140,7 +147,10 @@
                 </executions>
 
             </plugin>
-
+		<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.22.1</version>
+			</plugin>
 
         </plugins>
     </build>
