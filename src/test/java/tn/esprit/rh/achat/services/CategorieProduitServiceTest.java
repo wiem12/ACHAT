@@ -39,7 +39,7 @@ public class CategorieProduitServiceTest {
 	@Test
 	public void testRetrieveCategorieProduit() {
 		
-		CategorieProduit categorie = new CategorieProduit(null,"xyz","xyz", null);
+		CategorieProduit categorie = new CategorieProduit(null,"xyz","xyz");
 		categorie.setIdCategorieProduit(1L);
 		
 	Mockito.when(categorieRepository.findById(1L)).thenReturn(Optional.of(categorie));
@@ -55,7 +55,7 @@ public class CategorieProduitServiceTest {
 	public void createCategorieProduitTest()
 	{
 
-		CategorieProduit categorie2 = new CategorieProduit(null,"abcd", "abcd", null);
+		CategorieProduit categorie2 = new CategorieProduit(null,"abcd", "abcd");
 		categorie2.setIdCategorieProduit(2L);
 		
 		categorieService.addCategorieProduit(categorie2);
@@ -71,9 +71,9 @@ public class CategorieProduitServiceTest {
 		List<CategorieProduit> Catprodlist = new ArrayList<CategorieProduit>() {
 
 			{
-		add(new CategorieProduit(null,"qwerty","qwerty", null));
-		add(new CategorieProduit(null,"aqw","aqw", null));
-		add(new CategorieProduit(null,"azerty","azerty", null));
+		add(new CategorieProduit(null,"qwerty","qwerty"));
+		add(new CategorieProduit(null,"aqw","aqw"));
+		add(new CategorieProduit(null,"azerty","azerty"));
 			}};
 			
 			
@@ -88,7 +88,7 @@ public class CategorieProduitServiceTest {
 	@Test
 	public void TestDeleteCategorieProduit(){
 
-	CategorieProduit categorie1 = new CategorieProduit(null,"az","az", null);
+	CategorieProduit categorie1 = new CategorieProduit(null,"az","az");
 	categorie1.setIdCategorieProduit(7L);
 	
 	Mockito.lenient().when(categorieRepository.findById(categorie1.getIdCategorieProduit())).thenReturn(Optional.of(categorie1));

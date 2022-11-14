@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@AllArgsConstructor
+
 @NoArgsConstructor
 public class CategorieProduit implements Serializable {
 
@@ -67,6 +67,13 @@ public class CategorieProduit implements Serializable {
 	@OneToMany(mappedBy = "categorieProduit")
 	@JsonIgnore
 	private Set<Produit> produits;
+
+	public CategorieProduit(Long idCategorieProduit, String codeCategorie, String libelleCategorie) {
+		super();
+		this.idCategorieProduit = idCategorieProduit;
+		this.codeCategorie = codeCategorie;
+		this.libelleCategorie = libelleCategorie;
+	}
 	
 	
 }
