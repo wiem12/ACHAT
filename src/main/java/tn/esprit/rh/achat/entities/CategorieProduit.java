@@ -59,9 +59,8 @@ public class CategorieProduit implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	public CategorieProduit(Long idCategorieProduit, String codeCategorie, String libelleCategorie) {
+	public CategorieProduit( String codeCategorie, String libelleCategorie) {
 		super();
-		this.idCategorieProduit = idCategorieProduit;
 		this.codeCategorie = codeCategorie;
 		this.libelleCategorie = libelleCategorie;
 	}
