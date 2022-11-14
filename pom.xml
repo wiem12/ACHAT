@@ -89,11 +89,7 @@
                         </exclude>
                     </excludes>
                 </configuration>
-		    <configuration>
-					<serverId>nexus</serverId>
-					<nexusUrl>http://192.168.33.10:8081/</nexusUrl>
-					<skipStaging>true</skipStaging>
-				</configuration>
+		   
             </plugin>
 
         </plugins>
