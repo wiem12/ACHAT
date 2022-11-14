@@ -30,13 +30,7 @@ public class ProduitTests {
 	@InjectMocks
 	ProduitServiceImpl produitServiceImpl;
 
-@Test
 
-public void retrieveAllFProduitTest() {
-when(produitRepository.findAll()).thenReturn((List<Produit>) Stream
-.of(new Produit("produit","prod123",1.2f,new Date("15/10/2022"),new Date("23/10/2022")),new Produit("produit","prod123",1,new Date("15/10/2022"),new Date("23/10/2022"))));
-assertEquals(2,produitServiceImpl.retrieveAllProduits().size());
-}
 
 @Test
 public void retrieveProduitTest() {
