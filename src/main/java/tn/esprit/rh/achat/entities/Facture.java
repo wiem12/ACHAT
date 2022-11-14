@@ -2,6 +2,7 @@ package tn.esprit.rh.achat.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -43,6 +44,10 @@ public class Facture implements Serializable {
     @OneToMany(mappedBy="facture")
     @JsonIgnore
     private Set<Reglement> reglements;
+	public static List<Facture> getFactures() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	
 }
