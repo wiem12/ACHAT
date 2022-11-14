@@ -46,11 +46,12 @@ sh '  mvn sonar:sonar -Dsonar.login=ea6ea839b3be8f9c9bdf47c50348a95df2a48a3e'
 
             }
         }
-stage('JUNIT / MOCKITO'){
-            steps{
-                sh 'mvn test'
-            }
+stage ('Test Unitaire')
+        {
+        steps {
+        sh 'mvn test -Dtest="tn.esprit.rh.achat.services.StockServiceImplMock.java"' 
         }
+        
         
          stage('Building our image') { 
 
