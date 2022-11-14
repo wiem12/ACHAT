@@ -14,7 +14,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-
+@Getter
+@Setter
+@AllArgsConstructor
 @NoArgsConstructor
 public class CategorieProduit implements Serializable {
 
@@ -27,53 +29,46 @@ public class CategorieProduit implements Serializable {
 	private Long idCategorieProduit;
 	private String codeCategorie;
 	private String libelleCategorie;
-	
-	public Long getIdCategorieProduit() {
-		return idCategorieProduit;
-	}
-
-	public void setIdCategorieProduit(Long idCategorieProduit) {
-		this.idCategorieProduit = idCategorieProduit;
-	}
-
-	public String getCodeCategorie() {
-		return codeCategorie;
-	}
-
-	public void setCodeCategorie(String codeCategorie) {
-		this.codeCategorie = codeCategorie;
-	}
-
-	public String getLibelleCategorie() {
-		return libelleCategorie;
-	}
-
-	public void setLibelleCategorie(String libelleCategorie) {
-		this.libelleCategorie = libelleCategorie;
-	}
-
-	public Set<Produit> getProduits() {
-		return produits;
-	}
-
-	public void setProduits(Set<Produit> produits) {
-		this.produits = produits;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
 	@OneToMany(mappedBy = "categorieProduit")
 	@JsonIgnore
 	private Set<Produit> produits;
-
+	public Long getIdCategorieProduit() {
+		return idCategorieProduit;
+	}
+	public void setIdCategorieProduit(Long idCategorieProduit) {
+		this.idCategorieProduit = idCategorieProduit;
+	}
+	public String getCodeCategorie() {
+		return codeCategorie;
+	}
+	public void setCodeCategorie(String codeCategorie) {
+		this.codeCategorie = codeCategorie;
+	}
+	public String getLibelleCategorie() {
+		return libelleCategorie;
+	}
+	public void setLibelleCategorie(String libelleCategorie) {
+		this.libelleCategorie = libelleCategorie;
+	}
+	public Set<Produit> getProduits() {
+		return produits;
+	}
+	public void setProduits(Set<Produit> produits) {
+		this.produits = produits;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 	public CategorieProduit(Long idCategorieProduit, String codeCategorie, String libelleCategorie) {
 		super();
 		this.idCategorieProduit = idCategorieProduit;
 		this.codeCategorie = codeCategorie;
 		this.libelleCategorie = libelleCategorie;
 	}
+	
+	
+	
+	
 	
 	
 }
