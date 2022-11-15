@@ -1,0 +1,80 @@
+pipeline {
+    agent any
+    tools {
+        // Install the Maven version configured as "M3" and add it to the path.
+        maven "M2_HOME"
+    }
+ 
+ 
+
+    stages {
+        stage('Getting the project from GIT') {
+            steps {
+               echo 'Pulling..';
+                git branch: 'ramy',
+                url: 'https://github.com/wiem12/ACHAT.git',
+                credentialsId: 'rami';
+
+            }
+        }
+       
+       
+
+stage('Cleaning the project') {
+             
+             
+            steps {
+                echo 'cleaning project ...'
+                sh 'mvn clean'
+            }
+        }
+       
+       
+
+
+
+
+
+  stage('Code Quality Check via SonarQube') {
+             
+             
+            steps {
+               
+script {
+
+sh '  mvn sonar:sonar -Dsonar.sources=src/main/java -Dsonar.css.node=. -Dsonar.java.binaries=. -Dsonar.host.url=http://192.168.33.10:9000/ -Dsonar.login=admin   -Dsonar.password=sonar'
+
+ 
+}
+               
+            }
+        }
+        
+stage('MVN TEST'){
+            steps{
+                sh 'mvn test '
+            }
+         }
+         
+         
+         
+           
+         
+
+
+
+    
+ stage('Building image docker-compose') {
+          steps {
+              sh "docker-compose up -d"
+              sh "docker-compose stop"
+          }
+      }
+        
+     
+}  
+
+      }
+     
+         
+
