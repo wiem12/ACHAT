@@ -5,13 +5,6 @@ tools {
         maven "M2_HOME"
         
 }
-	  environment { 
-        registry = "wiembargaoui/alpine" 
-        registryCredential = 'dockerHub' 
-	dockerImage = '' 
-
-    }		
-	
 
 
     stages {
@@ -80,15 +73,7 @@ sh 'docker build -t wiembargaoui/achat:1.0.0 .'
             }
             
         
-             stage('Deploy our image') { 
-            steps { 
-                script { 
-                    docker.withRegistry( '', registryCredential ) { 
-                        dockerImage.push() 
-                    }
-                } 
-            }
-        } 
+         
             stage('docker-compose') {
           steps {
               sh "docker-compose up -d"
