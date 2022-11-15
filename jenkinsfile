@@ -79,7 +79,7 @@ stage('MVN TEST'){
           }
       }
       
-        stage("Publish to Nexus Repository Manager") {
+     stage('Nexus')  {
             steps {
                 script {
                     pom = readMavenPom file: "pom.xml";
@@ -113,11 +113,7 @@ stage('MVN TEST'){
                     }
                 }
             }
-         
         }
-        
-     
-}  
      
 }  
 
