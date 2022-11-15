@@ -10,8 +10,8 @@ pipeline {
         NEXUS_PROTOCOL = "http"
         NEXUS_URL = "192.168.33.10:8081"
         NEXUS_REPOSITORY = "maven-nexus-repo"
-       
-}
+        NEXUS_CREDENTIAL_ID = "nexus-user-credentials"
+    }
  
  
 
@@ -73,7 +73,7 @@ stage('MVN TEST'){
 
     
 
-     stage('Nexus')  {
+      stage("Publish to Nexus Repository Manager") {
             steps {
                 script {
                     pom = readMavenPom file: "pom.xml";
@@ -107,6 +107,7 @@ stage('MVN TEST'){
                     }
                 }
             }
+         
         }
      
 }  
