@@ -4,13 +4,7 @@ pipeline {
         // Install the Maven version configured as "M3" and add it to the path.
         maven "M2_HOME"
     }
-    environment {
-        NEXUS_VERSION = "nexus3"
-        NEXUS_PROTOCOL = "http"
-        NEXUS_URL = "192.168.33.10:8081"
-        NEXUS_REPOSITORY = "maven-nexus-repo"
-        NEXUS_CREDENTIAL_ID = "nexus-user-credentials"
-    }
+   
 stages {
         stage('Git') {
           steps {
@@ -41,6 +35,19 @@ sh '  mvn sonar:sonar -Dsonar.sources=src/main/java -Dsonar.css.node=. -Dsonar.j
                
             }
         }
+        stage('artifact construction') {
+            steps {
+                echo 'artifact construction...'
+                 sh 'mvn package -Dmaven.test.skip=true  -P test-coverage'
+
+            }
+        }
+        
+          stage('MVN Nexus'){
+            steps {
+               sh 'mvn deploy:deploy-file -DgroupId=tn.esprit.rh -DartifactId=achat -Dversion=1.0 -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://192.168.33.10:8081/repository/maven-releases/ -Dfile=target/achat-1.0.jar'
+            } 
+            }
         stage("Publish to Nexus Repository Manager") {
             steps {
                 script {
