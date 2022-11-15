@@ -23,7 +23,7 @@ tools {
 
        
 
-stage('Build Project'){
+stage('Clean Project'){
             steps{
                 sh 'mvn clean package '
             }
