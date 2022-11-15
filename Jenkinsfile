@@ -81,7 +81,13 @@ sh 'docker build -t wiembargaoui/achat:1.0.0 .'
           }
       }
             
-         
+          /* stage('NEXUS') {
+            steps {
+                sh 'mvn deploy -DskipTests'
+            }
+        }
+	*/
+            
        
             
  }
