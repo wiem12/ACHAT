@@ -39,7 +39,7 @@ echo "compiling"
                
             }
         }
-        stage('JUnit Test'){
+        stage('Mockito Test'){
             steps{
                 sh 'mvn test '
             }
