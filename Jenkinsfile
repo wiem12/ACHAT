@@ -9,6 +9,7 @@ stages {
         stage('Git') {
           steps {
            git branch: 'Rima',url: 'https://github.com/wiem12/ACHAT.git';
+            credentialsId: 'Rima';
         }
       }
 
