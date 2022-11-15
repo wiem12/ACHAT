@@ -15,20 +15,20 @@ pipeline {
     }
    
 stages {
-        stage('Git') {
+        stage('GIT') {
           steps {
            git branch: 'jihen',url: 'https://github.com/wiem12/ACHAT.git',
            credentialsId: 'jihen';
         }
       }
 
-stage('Clean') {
+stage('CLEANING') {
   steps {
    sh 'mvn clean'
                    }
 }
 
-stage('Compiling') {
+stage('COMPILING') {
              
              
             steps {
@@ -37,7 +37,7 @@ echo "compiling"
                
             }
         }
-          stage('SonarQube') {
+          stage('SONAR') {
              
              
             steps {
@@ -46,14 +46,14 @@ sh '  mvn sonar:sonar -Dsonar.login=b0c41c5575fa768bbdde9047fd18c14347910e69'
 
             }
         }
-stage ('Test Unitaire')
+stage ('MOCKITO')
         {
         steps {
         sh 'mvn test -Dtest="tn.esprit.rh.achat.services.StockServiceImplMock.java"' 
         }
         }
         
-         stage('Building our image') { 
+         stage('BUILD IMAGE') { 
 
             steps { 
 
@@ -67,7 +67,7 @@ stage ('Test Unitaire')
 
         }
 
-        stage('Deploy our image') { 
+        stage('DEPLOY IMAGE') { 
 
             steps { 
 
@@ -85,7 +85,7 @@ stage ('Test Unitaire')
 
         } 
 
-        stage('Cleaning up') { 
+        stage('CLEANING UP') { 
 
             steps { 
 
@@ -94,7 +94,7 @@ stage ('Test Unitaire')
             }
 
         }
-         stage('Docker Compose'){
+         stage('DOCKER COMPOSE'){
         
         steps {
         
