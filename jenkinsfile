@@ -72,13 +72,7 @@ stage('MVN TEST'){
 
 
     
- stage('Building image docker-compose') {
-          steps {
-              sh "docker-compose up -d"
-              sh "docker-compose stop"
-          }
-      }
-      
+
      stage('Nexus')  {
             steps {
                 script {
