@@ -13,7 +13,9 @@ tools {
             steps {
                
                 git branch: 'master',
-                url: 'https://github.com/wiem12/ACHAT.git';
+                url: 'https://github.com/wiem12/ACHAT.git',
+		    credentialsId: 'wiem12';
+
             }
         }
        
